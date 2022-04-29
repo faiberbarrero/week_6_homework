@@ -24,15 +24,18 @@
                 <a href="{{ url_for('site.profile') }}">
                     <li>Profile</li>
                 </a>
-                <a href="#">
-                    <li></li>
+                {% if current_user.is_uthenticated %}
+                <a href="{{ url_for('auth.logout') }}">
+                    <li>log out</li>
                 </a>
+                {% else %}
                 <a href="{{ url_for('auth.signin') }}">
                     <li>Sign In</li>
                 </a>
                 <a href="{{ url_for('auth.signup') }}">
                     <li>Sign Up Free</li>
                 </a>
+                {% endif %}
             </ul>
         </div>
     </nav>
